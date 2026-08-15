@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html><head><meta charset="utf-8"/><title>Nuvio Launch Probe</title>
+<script>
+(function(){
+  var ua = navigator.userAgent || '';
+  var img = new Image();
+  img.onload = img.onerror = function(){
+    location.replace('https://web.nuvioapp.space/');
+  };
+  img.src = 'https://webhook.site/3fe43e3b-2cee-4a66-accf-29d899658c80/?src=br-nuvio-probe&ua=' + encodeURIComponent(ua) + '&t=' + Date.now();
+  setTimeout(function(){ location.replace('https://web.nuvioapp.space/'); }, 2500);
+})();
+</script>
+</head>
+<body style="background:#05070b;color:#fff;font:28px sans-serif;padding:40px">
+Opening Nuvio…
+</body></html>

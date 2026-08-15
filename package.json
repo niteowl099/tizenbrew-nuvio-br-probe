@@ -1,0 +1,11 @@
+﻿{
+  "name": "Nuvio Launch Probe",
+  "version": "1.0.0",
+  "description": "Webhook ping then open Nuvio hosted app (BR verify)",
+  "packageType": "app",
+  "appName": "Nuvio Launch Probe",
+  "appPath": "app/index.html",
+  "keys": [],
+  "evaluateScriptOnDocumentStart": false,
+  "files": ["app", "README.md"]
+}
