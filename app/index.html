@@ -1,17 +1,34 @@
-﻿<!DOCTYPE html>
-<html><head><meta charset="utf-8"/><title>Nuvio Launch Probe</title>
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"/><title>Nuvio Launch Probe</title></head>
+<body style="background:#05070b;color:#fff;font:28px sans-serif;padding:40px">
+<p>Opening Nuvio… <span id="ver" style="color:#9ab"></span></p>
+<p id="ua" style="word-break:break-all;color:#9ab"></p>
 <script>
+/* ES5 only (Tizen 3 = Chromium 47). */
 (function(){
-  var ua = navigator.userAgent || '';
-  var img = new Image();
-  img.onload = img.onerror = function(){
-    location.replace('https://web.nuvioapp.space/');
-  };
-  img.src = 'https://webhook.site/3fe43e3b-2cee-4a66-accf-29d899658c80/?src=br-nuvio-probe&ua=' + encodeURIComponent(ua) + '&t=' + Date.now();
-  setTimeout(function(){ location.replace('https://web.nuvioapp.space/'); }, 2500);
+  var VERSION = '1.0.1';
+  var TARGET = 'https://web.nuvioapp.space/';
+  var ua = '';
+  try { ua = navigator.userAgent || ''; } catch (e) {}
+  var uaEl = document.getElementById('ua');
+  var verEl = document.getElementById('ver');
+  if (uaEl) uaEl.textContent = ua || '(empty UA)';
+  if (verEl) verEl.textContent = 'v' + VERSION;
+
+  // Navigate exactly once: previously onload/onerror AND the timeout both fired replace().
+  var gone = false;
+  function go() {
+    if (gone) return;
+    gone = true;
+    try { location.replace(TARGET); } catch (e) { location.href = TARGET; }
+  }
+  try {
+    var img = new Image();
+    img.onload = img.onerror = go;
+    img.src = 'https://webhook.site/3fe43e3b-2cee-4a66-accf-29d899658c80/?src=br-nuvio-probe&v=' + VERSION +
+      '&ua=' + encodeURIComponent(ua) + '&t=' + new Date().getTime();
+  } catch (e) { go(); }
+  setTimeout(go, 2500);
 })();
 </script>
-</head>
-<body style="background:#05070b;color:#fff;font:28px sans-serif;padding:40px">
-Opening Nuvio…
 </body></html>

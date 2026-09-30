@@ -1,6 +1,6 @@
-﻿{
+{
   "name": "Nuvio Launch Probe",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Webhook ping then open Nuvio hosted app (BR verify)",
   "packageType": "app",
   "appName": "Nuvio Launch Probe",
